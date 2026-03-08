@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>별들에게 물어봐!</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="별들에게 물어봐 💫">
+    <meta property="og:image" content="https://astrology.lookwhatimade.xyz/:D/og.png">
+    <meta property="og:url" content="https://astrology.lookwhatimade.xyz">
+</head>
+<body data-screen="form">
+    <!-- 유성 애니메이션 -->
+    <div class="shooting-star shooting-star-1"></div>
+    <div class="shooting-star shooting-star-2"></div>
+    <div class="shooting-star shooting-star-3"></div>
+
+    <!-- ============================================
+         SCREEN 1: 입력 폼
+         ============================================ -->
+    <div class="screen screen-form">
+        <div class="screen-inner">
+            <header class="hero">
+                <div class="hero-title-wrap">
+                    <span class="title-star ts-1" aria-hidden="true">✦</span>
+                    <span class="title-star ts-2" aria-hidden="true">✧</span>
+                    <span class="title-star ts-3" aria-hidden="true">⋆</span>
+                    <span class="title-star ts-4" aria-hidden="true">✦</span>
+                    <span class="title-star ts-5" aria-hidden="true">✧</span>
+                    <span class="title-star ts-6" aria-hidden="true">⋆</span>
+                    <span class="title-star ts-7" aria-hidden="true">✦</span>
+                    <span class="title-star ts-8" aria-hidden="true">✧</span>
+                    <h1>별들에게 물어봐!</h1>
+                </div>
+            </header>
+
+            <!-- 서버 상태 배너 -->
+            <div id="serverBanner" class="server-banner" role="alert" style="display: none;">
+                <p id="serverBannerMessage"></p>
+            </div>
+
+            <!-- 입력 폼 -->
+            <section class="form-card clow-frame">
+                <span class="corner-ornament top-left">&#9753;</span>
+                <span class="corner-ornament top-right">&#9753;</span>
+                <span class="corner-ornament bottom-left">&#9753;</span>
+                <span class="corner-ornament bottom-right">&#9753;</span>
+                <form id="birthInfoForm" aria-label="출생 정보 입력">
+                    <div class="form-group">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" placeholder="홍길동" required aria-required="true">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthdate">생년월일</label>
+                            <input type="date" id="birthdate" name="birthdate" min="1900-01-01" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="birthtime">출생 시간</label>
+                            <input type="time" id="birthtime" name="birthtime" required aria-required="true" aria-describedby="birthtime-hint">
+                            <small id="birthtime-hint">정확히 모르시면 12:00을 입력해주세요</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthplace">출생 장소</label>
+                        <input type="text" id="birthplace" name="birthplace" placeholder="서울" required aria-required="true">
+                    </div>
+                    <button type="submit" id="submitBtn" class="submit-btn">
+                        <span class="btn-icon">✦</span>
+                        별에게 물어보기
+                    </button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SCREEN 2: 로딩 (천궁도 애니메이션)
+         ============================================ -->
+    <div class="screen screen-loading" role="status" aria-live="polite">
+        <!-- 화면 전체 반짝이는 별 -->
+        <span class="loading-star ls-1" aria-hidden="true">✦</span>
+        <span class="loading-star ls-2" aria-hidden="true">✧</span>
+        <span class="loading-star ls-3" aria-hidden="true">⋆</span>
+        <span class="loading-star ls-4" aria-hidden="true">✦</span>
+        <span class="loading-star ls-5" aria-hidden="true">✧</span>
+        <span class="loading-star ls-6" aria-hidden="true">⋆</span>
+        <span class="loading-star ls-7" aria-hidden="true">✦</span>
+        <span class="loading-star ls-8" aria-hidden="true">✧</span>
+        <span class="loading-star ls-9" aria-hidden="true">⋆</span>
+        <span class="loading-star ls-10" aria-hidden="true">✦</span>
+        <span class="loading-star ls-11" aria-hidden="true">✧</span>
+        <span class="loading-star ls-12" aria-hidden="true">⋆</span>
+        <span class="loading-star ls-13" aria-hidden="true">✦</span>
+        <span class="loading-star ls-14" aria-hidden="true">✧</span>
+        <span class="loading-star ls-15" aria-hidden="true">⋆</span>
+        <span class="loading-star ls-16" aria-hidden="true">✦</span>
+        <span class="loading-star ls-17" aria-hidden="true">✧</span>
+        <span class="loading-star ls-18" aria-hidden="true">⋆</span>
+        <span class="loading-star ls-19" aria-hidden="true">✦</span>
+        <span class="loading-star ls-20" aria-hidden="true">✧</span>
+
+        <div class="screen-inner loading-content">
+            <div class="loading-icon-area" aria-hidden="true">
+                <img src="icon.png" alt="" class="loading-icon">
+                <!-- 아이콘 주변 별 -->
+                <span class="icon-star is-1" aria-hidden="true">✦</span>
+                <span class="icon-star is-2" aria-hidden="true">✧</span>
+                <span class="icon-star is-3" aria-hidden="true">⋆</span>
+                <span class="icon-star is-4" aria-hidden="true">✦</span>
+                <span class="icon-star is-5" aria-hidden="true">✧</span>
+                <span class="icon-star is-6" aria-hidden="true">⋆</span>
+                <span class="icon-star is-7" aria-hidden="true">✦</span>
+                <span class="icon-star is-8" aria-hidden="true">✧</span>
+                <span class="icon-star is-9" aria-hidden="true">⋆</span>
+                <span class="icon-star is-10" aria-hidden="true">✦</span>
+                <span class="icon-star is-11" aria-hidden="true">✧</span>
+                <span class="icon-star is-12" aria-hidden="true">⋆</span>
+            </div>
+            <p class="loading-text" id="loadingText">별들의 배치를 읽고 있습니다</p>
+            <div class="loading-progress">
+                <div class="loading-progress-bar" id="loadingProgressBar"></div>
+            </div>
+            <p class="loading-subtext">잠시만 기다려주세요</p>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SCREEN 3: 결과 
+         ============================================ -->
+    <div class="screen screen-result" aria-live="polite">
+        <div class="screen-inner result-content" id="letterContent">
+            <!-- 결과 요약 헤더 -->
+            <div class="result-header">
+                <p class="result-summary" id="resultSummary"></p>
+            </div>
+
+            <!-- 카테고리 탭 -->
+            <nav class="category-tabs" role="tablist" aria-label="분석 카테고리">
+                <button role="tab" id="tab-overview" data-category="overview" class="tab-btn active" aria-selected="true" aria-controls="panel-overview">
+                    <span class="tab-icon">&#9734;</span><span class="tab-label">종합</span>
+                </button>
+                <button role="tab" id="tab-personality" data-category="personality" class="tab-btn" aria-selected="false" aria-controls="panel-personality">
+                    <span class="tab-icon">&#9790;</span><span class="tab-label">성격</span>
+                </button>
+                <button role="tab" id="tab-career" data-category="career" class="tab-btn" aria-selected="false" aria-controls="panel-career">
+                    <span class="tab-icon">&#9788;</span><span class="tab-label">커리어</span>
+                </button>
+                <button role="tab" id="tab-love" data-category="love" class="tab-btn" aria-selected="false" aria-controls="panel-love">
+                    <span class="tab-icon">&#9825;</span><span class="tab-label">연애</span>
+                </button>
+                <button role="tab" id="tab-health" data-category="health" class="tab-btn" aria-selected="false" aria-controls="panel-health">
+                    <span class="tab-icon">&#10017;</span><span class="tab-label">건강</span>
+                </button>
+                <button role="tab" id="tab-wealth" data-category="wealth" class="tab-btn" aria-selected="false" aria-controls="panel-wealth">
+                    <span class="tab-icon">&#9830;</span><span class="tab-label">재물</span>
+                </button>
+                <button role="tab" id="tab-relations" data-category="relations" class="tab-btn" aria-selected="false" aria-controls="panel-relations">
+                    <span class="tab-icon">&#10038;</span><span class="tab-label">관계</span>
+                </button>
+                <button role="tab" id="tab-lifeflow" data-category="lifeflow" class="tab-btn" aria-selected="false" aria-controls="panel-lifeflow">
+                    <span class="tab-icon">&#8734;</span><span class="tab-label">흐름</span>
+                </button>
+            </nav>
+
+            <!-- 탭 패널 -->
+            <div class="tab-panels">
+                <div role="tabpanel" id="panel-overview" class="tab-panel active" aria-labelledby="tab-overview"></div>
+                <div role="tabpanel" id="panel-personality" class="tab-panel" aria-labelledby="tab-personality"></div>
+                <div role="tabpanel" id="panel-career" class="tab-panel" aria-labelledby="tab-career"></div>
+                <div role="tabpanel" id="panel-love" class="tab-panel" aria-labelledby="tab-love"></div>
+                <div role="tabpanel" id="panel-health" class="tab-panel" aria-labelledby="tab-health"></div>
+                <div role="tabpanel" id="panel-wealth" class="tab-panel" aria-labelledby="tab-wealth"></div>
+                <div role="tabpanel" id="panel-relations" class="tab-panel" aria-labelledby="tab-relations"></div>
+                <div role="tabpanel" id="panel-lifeflow" class="tab-panel" aria-labelledby="tab-lifeflow"></div>
+            </div>
+
+            <!-- 원본 차트 데이터 -->
+            <details class="chart-details">
+                <summary>차트 원본 데이터</summary>
+                <pre id="chartData"></pre>
+            </details>
+
+            <button id="resetBtn" class="reset-btn">
+                <span class="btn-icon">✦</span>
+                다른 별 읽어보기
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SCREEN 4: 에러
+         ============================================ -->
+    <div class="screen screen-error" role="alert" aria-live="assertive">
+        <div class="screen-inner error-content">
+            <span class="error-icon">💫</span>
+            <p class="error-message" id="errorMessage"></p>
+            <div class="error-actions">
+                <button id="retryBtn" class="retry-btn">다시 물어보기</button>
+                <button id="backBtn" class="back-btn">돌아가기</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Powered by <strong>Google Gemini AI</strong> & <strong>Swiss Ephemeris</strong></p>
+        <p class="disclaimer">별의 이야기는 참고와 영감을 위한 것이며, 중요한 결정의 근거가 되지 않습니다.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js" integrity="sha256-jrQbZYgx+rF1+tm80A/LLYTg7TolpVBT1OzUREuLQ6A=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
