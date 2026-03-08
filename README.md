@@ -43,37 +43,19 @@ cd backend
 pip install -r requirements.txt
 ```
 
-### 3. 환경 변수 설정
+### 3. Google API 키 발급
 
-Google API 키를 환경 변수로 설정합니다.
-
-```bash
-export GOOGLE_API_KEY=your-api-key-here
-```
-
-> **API 키 발급**: [Google AI Studio](https://aistudio.google.com/app/apikey)에서 발급받을 수 있습니다.
+[Google AI Studio](https://aistudio.google.com/app/apikey)에서 API 키를 발급받습니다.
 
 ## 실행 방법
 
-### 백엔드 서버 실행
-
 ```bash
-cd backend
-python main.py
+GOOGLE_API_KEY={your-api-key} venv/bin/python -m uvicorn main:app \
+  --host 0.0.0.0 --port 8000 --reload \
+  --app-dir backend
 ```
 
-서버가 `http://localhost:8000`에서 실행됩니다.
-
-### 프론트엔드 접속
-
-브라우저에서 `frontend/index.html` 파일을 직접 열거나, 간단한 HTTP 서버를 실행하세요:
-
-```bash
-cd frontend
-python -m http.server 3000
-```
-
-그 다음 브라우저에서 `http://localhost:3000`을 방문하세요.
+브라우저에서 `http://localhost:8000`을 방문하세요.
 
 ## 사용 방법
 
